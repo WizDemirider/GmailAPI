@@ -42,7 +42,7 @@ def send_message(service, user_id, to, name):
     Sent Message.
   """
   try:
-    message = (service.users().messages().send(userId=user_id, body=create_message("Ankit Gupta", to, "Python and Web Development Workshop", u'Dear '+name+', <p>Thank you for registering for my workshop! I can\'t wait for it to start and I\'m sure you can\'t either!</p><p> Join me on whatsapp for all further announcements and to decide the schedule. I will also be sharing reference material for the workshop on this group. Reply back to this email if you are unable to use the link or do not have whatsapp. </p><p><a href="#group-link-here">Link</a></p><p>Regards,<br>Ankit Gupta</p>'))
+    message = (service.users().messages().send(userId=user_id, body=create_message("Ankit Gupta", to, "Python and Web Development Workshop", u'Dear '+name+', <p>Thank you for registering for my workshop! I can\'t wait for it to start and I\'m sure you can\'t either!</p><p> Join me on whatsapp for all further announcements and to decide the schedule. I will also be sharing reference material for the workshop on this group. Reply back to this email if you are unable to use the link or do not have whatsapp. </p><p><a href="https://chat.whatsapp.com/Du5zp5LX692Gdo3pmyxHZj">https://chat.whatsapp.com/Du5zp5LX692Gdo3pmyxHZj</a></p><p>Regards,<br>Ankit Gupta<br>+919833482539</p>'))
                .execute())
     print('Message Id: %s sent from %s to %s' % (message['id'], user_id, to))
     return message
@@ -79,7 +79,7 @@ def main():
         reader = csv.reader(csvfile)
         data = list(reader)[1:]
 
-    for row in data[2:]:
+    for row in data:
       send_message(service, "argankit@gmail.com", row[1], row[2].split()[0])
 
 
