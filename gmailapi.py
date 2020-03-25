@@ -7,6 +7,7 @@ from google.auth.transport.requests import Request
 from email.mime.text import MIMEText
 import base64
 import csv
+import sys
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
@@ -75,7 +76,11 @@ def main():
     service = build('gmail', 'v1', credentials=creds)
 
     data = []
-    with open('workshop.csv') as csvfile:
+    if not len(sys.argv)>1:
+      fname = "workshop.csv"
+    else:
+      fname = sys.argv[1]
+    with open(fname) as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)[1:]
 
